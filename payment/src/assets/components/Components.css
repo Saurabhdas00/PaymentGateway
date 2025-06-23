@@ -1,0 +1,163 @@
+/* Center the component on the screen */
+.main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f3f4f6; /* Tailwind gray-100 */
+  padding: 1rem;
+}
+
+/* Card styling */
+.card-container {
+  background: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+/* Title styling */
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Grid layout for amounts */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+/* Amount box */
+.amount-box {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Amount text */
+.amount-text {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* Form section */
+.form-section {
+  margin-top: 1rem;
+}
+
+/* QR section */
+.qr-section {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* QR heading */
+.qr-amount {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* QR image */
+.qr-code {
+  margin: auto;
+}
+
+/* Note below QR */
+.qr-note {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  color: #6b7280; /* Tailwind gray-600 */
+}
+
+/* Input and label */
+.input-field {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.form-label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+/* Button styles */
+.button-primary,
+.button-success,
+.button-purple {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+
+.button-primary {
+  background-color: #2563eb; /* blue-600 */
+}
+
+.button-primary:hover {
+  background-color: #1d4ed8; /* blue-700 */
+}
+
+.button-success {
+  background-color: #16a34a; /* green-600 */
+}
+
+.button-success:hover {
+  background-color: #15803d; /* green-700 */
+}
+
+.button-purple {
+  background-color: #7c3aed; /* purple-600 */
+}
+
+.button-purple:hover {
+  background-color: #6d28d9; /* purple-700 */
+}
+
+/* Success message */
+.success-message {
+  margin-top: 1.5rem;
+  color: #15803d; /* green-700 */
+  text-align: center;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+.card-title,
+.amount-text,
+.form-label,
+.qr-amount,
+.qr-note,
+.success-message {
+  color: #000;
+}
+
+/* Warning on QR step */
+.qr-warning {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: center;
+}
