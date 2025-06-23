@@ -1,12 +1,32 @@
-# React + Vite
+# 💳 UPI Payment Booking React App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a simple React app that allows users to:
 
-Currently, two official plugins are available:
+- Select a booking amount
+- Enter their phone number
+- Scan a generated UPI QR code to make payment
+- Submit transaction reference ID
+- View a confirmation message after submission
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🔧 Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 📲 UPI QR Code generation with dynamic amount
+- 📞 Phone number input before payment
+- 🧾 Reference number entry after QR scan
+- 🔐 Prevents accidental refresh during payment
+- ⚠️ Shows native browser warning when refreshing/closing tab
+- ✅ Automatically resets after successful submission
+- 🖤 Clean UI with all styles in a separate CSS file
+
+---
+
+## 📦 Folder Structure
+
+```plaintext
+src/
+├── Components.jsx        # Main logic for the booking & payment process
+├── components.css        # Styling for the components
+├── App.js                # React app entry component
+└── index.js              # Root render logic
