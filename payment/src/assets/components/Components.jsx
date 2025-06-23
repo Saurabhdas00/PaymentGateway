@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { QRCodeCanvas } from 'qrcode.react';
 import './components.css';
 
@@ -11,8 +11,10 @@ const Components = () => {
   const [showQR, setShowQR] = useState(false);
   const [txnId, setTxnId] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(300); // 5 minutes
+  const timerRef = useRef(null);
 
-  const upiId = 'your-upi-id@upi'; 
+  const upiId = 'your-upi-id@upi'; // Replace with your actual UPI ID
 
   useEffect(() => {
     const disableRefreshKeys = (e) => {
@@ -46,18 +48,45 @@ const Components = () => {
   }, [showQR, submitted]);
 
   useEffect(() => {
+    if (showQR && !submitted) {
+      setTimeLeft(300);
+      timerRef.current = setInterval(() => {
+        setTimeLeft((prev) => prev - 1);
+      }, 1000);
+    }
+
+    return () => {
+      clearInterval(timerRef.current);
+    };
+  }, [showQR, submitted]);
+
+  useEffect(() => {
+    if (timeLeft <= 0 && showQR && !submitted) {
+      alert("⏳ Payment time expired. Please try again.");
+      clearInterval(timerRef.current);
+      resetForm();
+    }
+  }, [timeLeft, showQR, submitted]);
+
+  useEffect(() => {
     if (submitted) {
       const timer = setTimeout(() => {
-        setSelectedAmount(null);
-        setShowForm(false);
-        setPhone('');
-        setShowQR(false);
-        setTxnId('');
-        setSubmitted(false);
+        resetForm();
       }, 2000);
       return () => clearTimeout(timer);
     }
   }, [submitted]);
+
+  const resetForm = () => {
+    setSelectedAmount(null);
+    setShowForm(false);
+    setPhone('');
+    setShowQR(false);
+    setTxnId('');
+    setSubmitted(false);
+    setTimeLeft(300);
+    clearInterval(timerRef.current);
+  };
 
   const handleBook = (amount) => {
     setSelectedAmount(amount);
@@ -81,6 +110,7 @@ const Components = () => {
       return;
     }
     setSubmitted(true);
+    clearInterval(timerRef.current);
   };
 
   const getUPILink = () => {
@@ -128,6 +158,10 @@ const Components = () => {
             <p className="qr-warning">
               ⚠️ Please do not go back or refresh while the payment is in process.
             </p>
+            <p className="timer-text">
+              Time left: {String(Math.floor(timeLeft / 60)).padStart(2, '0')}:
+              {String(timeLeft % 60).padStart(2, '0')}
+            </p>
             <h2 className="qr-amount">Pay ₹{selectedAmount}</h2>
             <QRCodeCanvas value={getUPILink()} size={200} className="qr-code" />
             <p className="qr-note">Scan the QR code to pay</p>
@@ -147,7 +181,6 @@ const Components = () => {
             </div>
           </div>
         )}
-
 
         {submitted && (
           <div className="success-message">
