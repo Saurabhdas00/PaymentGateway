@@ -24,8 +24,9 @@ This is a simple React app that allows users to:
 
 ## 📦 Folder Structure
 
+```plaintext
 src/
-├── Components.jsx        # Main component logic
-├── components.css        # All UI styling
-├── App.js                # Entry point
-└── index.js              # React root
+├── Components.jsx        # Main logic for the booking & payment process
+├── components.css        # Styling for the components
+├── App.js                # React app entry component
+└── index.js              # Root render logic
